@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Words of Letters</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .ui {
+            height: 28px;
+            text-decoration: none;
+            border-radius: 5px; /*up to date browsers support this, but you can add prefixes if you want*/
+        }
+        
+        #searchInput {
+            min-width: 5cm;
+            max-width: 90%;
+            
+            color: #333;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Words of Letters</h1>
+
+    <p>
+        Offer assistance for games like Wordscapes.
+    </p>
+
+    <iframe class="hidden" id="frmFile" src="30k.txt" onload="LoadFile();"></iframe>
+    <!-- Input to upload a text file with words -->
+    <p class="hidden">
+        <input type="file" id="fileInput" />
+        <button onclick="loadWordsFromFile()">Load Words from File</button>
+        <button onclick="saveTrie()">Save Trie to File</button>
+        <button onclick="loadTrieFromFile()">Load Trie from File</button>
+        <br><br>
+    </p>
+
+    <!-- Input box for searching, with Enter key triggering search -->
+    <input class="ui" type="text" id="searchInput" placeholder="Enter letters to show words" onkeydown="checkEnter(event)" />
+    <button class="ui" onclick="searchWordPermutations()">Show Words</button>
+    <br>
+    <div id="searchResult"></div>
+
+    <script src="js/trie.gen.js"></script>
+</body>
+</html>
